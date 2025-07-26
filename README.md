@@ -21,10 +21,11 @@ This project was started and an intial MVP (I hope!) was completed during a [boo
 ## Future plans
 
 - Add the option to pick the path and filename for the data file. This should also allow placing the binary file wherever. Option would be to add a config file (with the file path) or ???
-- While adding a project, if a name is missing or invalid, change it to a for loop so they can keep trying picking a name. Same name as another program should as if they want to overwrite the existing one.
-- Also add to edit project, to change missing/invalid name to a for loop, and the option to overwrite if another program with the same name exists
 - Add what package manager is used (needs some way to save that, config file like filepath?), and have the tool give the commands for installing the dependencies and removing/changing them to auto when no longer needed.
 - List dependencies and what programs are dependent on them.
+- Ability to exit out of adding/editing/removing mode
+- Refactor so newProgram also adds the program to the map of programs, meaning that have to be sent in too. (This is to avoid inconsistency in how program names as keys get processed. But I still need to remember to strings.ToLower any time I check the map)
+- Add short versions of commands: ls for list, rm for remove.
 
 ## Change log
 

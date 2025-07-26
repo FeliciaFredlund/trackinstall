@@ -11,6 +11,7 @@ type config struct {
 	reader       *bufio.Scanner
 	programs     map[string]*program
 	dependencies map[string]*dependency
+	programName  string
 }
 
 const (
@@ -32,26 +33,29 @@ func replLoop() {
 		fmt.Print("\nTrackInstall > ")
 		reader.Scan()
 
-		input := cleanInput(reader.Text())
-
+		input := strings.Fields(reader.Text())
 		if len(input) == 0 {
 			continue
 		}
+		command := strings.ToLower(input[0])
 
-		if command, exists := commands[input[0]]; exists {
-			if err := command.callback(&config); err != nil {
+		config.programName = strings.Join(input[1:], " ")
+
+		if cmd, exists := commands[command]; exists {
+			if err := cmd.callback(&config); err != nil {
 				fmt.Println(err)
 			}
 		} else {
 			fmt.Println("Unknown command")
 		}
+		/*
+			fmt.Println(config.programName)
 
-		for key, prog := range config.programs {
-			fmt.Println(key)
-			for _, dep := range prog.dependencies {
-				fmt.Println(dep)
+			for key, prog := range config.programs {
+				fmt.Println(key)
+				fmt.Println(prog)
 			}
-		}
+		*/
 	}
 }
 
@@ -84,8 +88,4 @@ func saveData(filepath string, programs map[string]*program) error {
 	}
 
 	return nil
-}
-
-func cleanInput(input string) []string {
-	return strings.Fields(strings.ToLower(input))
 }

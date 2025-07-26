@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"strings"
 )
 
 type savedProgram struct {
@@ -49,7 +50,7 @@ func parseData(data []byte) (map[string]*program, map[string]*dependency, error)
 
 	for _, savedProg := range *savedPrograms {
 		prog := newProgram(savedProg.Name, savedProg.Dependencies, dependencies)
-		programs[prog.name] = &prog
+		programs[strings.ToLower(prog.name)] = &prog
 	}
 
 	return programs, dependencies, nil

@@ -34,24 +34,29 @@ type replCommand struct {
 
 func commandExit(config *config) error {
 	fmt.Println("Saving your changes to file...")
-	// CALL FUNCTION TO SAVE ALL DATA TO FILE
+	err := saveData(SAVEFILEPATH, config.programs)
+	if err != nil {
+		fmt.Println("Something went wrong when saving data. Aborting exiting program.")
+		return fmt.Errorf("could not save data on trying to exit: %w", err)
+	}
 	fmt.Println("Done.")
 	os.Exit(0)
 	return fmt.Errorf("something went wrong while closing the program")
 }
 
 func commandHelp(config *config) error {
-	fmt.Println("\nThis is a tool to track manually installed programs.")
+	fmt.Println("\nThis is a tool to track manually installed programs and their dependencies.")
 	fmt.Print("\nAvailable commands:\n\n")
 	for _, cmd := range getCommands() {
 		fmt.Printf("%s: %s\n", cmd.name, cmd.description)
 	}
-	fmt.Println()
 	return nil
 }
 
 func commandAdd(config *config) error {
-	fmt.Println("Adding a program")
+	fmt.Println()
+	fmt.Println("~*~*~ Adding a program ~*~*~")
+	fmt.Println()
 	fmt.Println("A program has a name, dependencies (the packages you need to install with your package manager), installation instructions, and uninstall instructions.")
 	fmt.Println("Name is required. Dependencies and the instructions are optional.")
 	fmt.Println()

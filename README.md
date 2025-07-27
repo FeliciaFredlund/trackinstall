@@ -1,6 +1,6 @@
 # TrackInstall :ledger:
 
-A CLI to track manually installed programs/apps and their dependencies. In a future update, it will be possible to add install and uninstall instructions.
+A CLI tool to track manually installed programs/apps and their dependencies written in :go:. In a future update, it will be possible to add install and uninstall instructions.
 
 Have trouble keeping track of the packages you manually install with your package manager? Do you want to avoid your OS slowly bloating due to them? TrackInstall is the place you can save this information so that you know when you can move those packages to auto so your package manager can work its magic.
 

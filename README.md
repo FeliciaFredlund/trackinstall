@@ -13,10 +13,9 @@ This project's intial MVP was completed during a [boot.dev](https://boot.dev) ha
 Install the project by:
 ```
 git clone https://github.com/FeliciaFredlund/trackinstall
-cd trackinstall
 ```
 
-Run it with:
+Run it with (from inside project folder):
 ```
 go build
 ./trackinstall

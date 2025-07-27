@@ -15,7 +15,7 @@ Install the project by:
 git clone https://github.com/FeliciaFredlund/trackinstall
 ```
 
-Run it with (from inside project folder):
+Run it (from inside the project folder):
 ```
 go build
 ./trackinstall

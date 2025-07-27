@@ -80,8 +80,8 @@ func commandAdd(config *config) error {
 	fmt.Println()
 	fmt.Println("~*~*~ Adding a program ~*~*~")
 	fmt.Println()
-	fmt.Println("A program has a name, dependencies (the packages you need to install with your package manager), installation instructions, and uninstall instructions.")
-	fmt.Println("Name is required. Dependencies and the instructions are optional.")
+	fmt.Println("A program has a name and dependencies (the packages you need to install with your package manager).")
+	fmt.Println("Name is required and dependencies are optional.")
 	fmt.Println()
 
 	name := getNewProgramName(config)
@@ -89,12 +89,6 @@ func commandAdd(config *config) error {
 	fmt.Print("Dependencies (names of packages with space as separator): ")
 	config.reader.Scan()
 	packageNames := strings.Fields(config.reader.Text())
-
-	/*fmt.Print("Installation instructions: TO BE IMPLEMENTED\n")
-	// Read a file option (install.sh script or similar) --- input steps one by one --- input all steps at once?
-
-	fmt.Print("Uninstall instructions: TO BE IMPLEMENTED\n") */
-	// Read a file option (install.sh script or similar) --- input steps one by one --- input all steps at once?
 
 	prog := newProgram(name, packageNames, config.dependencies)
 	config.programs[strings.ToLower(name)] = &prog
@@ -123,8 +117,6 @@ func commandEdit(config *config) error {
 		fmt.Println("1 - Name")
 		fmt.Println("2 - Dependencies")
 		fmt.Println("3 - Finished editing")
-		//fmt.Println("3 Install instructions")
-		//fmt.Println("4 Uninstall instructions")
 
 		fmt.Print("Answer: ")
 		config.reader.Scan()

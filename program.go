@@ -12,15 +12,21 @@ type dependency struct {
 	programs []string
 }
 
-func (p program) String() string {
-	text := "\"" + p.name + "\" depends on "
-	for _, dep := range p.dependencies {
+func (prog program) String() string {
+	text := "\"" + prog.name + "\" depends on "
+	text += programDepedenciesString(prog.dependencies)
+	return text
+}
+
+func programDepedenciesString(dependencies []*dependency) string {
+	if len(dependencies) == 0 {
+		return "n/a"
+	}
+
+	text := ""
+	for _, dep := range dependencies {
 		text += "\"" + dep.name + "\" "
 	}
-	if len(p.dependencies) == 0 {
-		text += "n/a"
-	}
-	//text = strings.TrimSuffix(text, ", ")
 	return text
 }
 

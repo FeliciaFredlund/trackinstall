@@ -106,6 +106,50 @@ func commandEdit(config *config) error {
 	fmt.Println()
 	fmt.Println("~*~*~ Editing a program ~*~*~")
 	fmt.Println()
+	fmt.Println("First we'll get the program you want to edit.")
+	fmt.Println("After that editing begins.")
+	fmt.Println()
+
+	name := getExistingProgramName(config)
+	prog := config.programs[name]
+	oldName := prog.name
+
+	fmt.Println("\nCurrent program data:")
+	fmt.Println()
+	fmt.Println(prog)
+	fmt.Println()
+	for editing := true; editing; {
+		fmt.Println("What would you like to edit? Answer with a number (1-3)")
+		fmt.Println("1 - Name")
+		fmt.Println("2 - Dependencies")
+		fmt.Println("3 - Finished editing")
+		//fmt.Println("3 Install instructions")
+		//fmt.Println("4 Uninstall instructions")
+
+		fmt.Print("Answer: ")
+		config.reader.Scan()
+		answer := config.reader.Text()
+		switch answer {
+		case "1":
+			//Do something to newName
+		case "2":
+			/*fmt.Println("Current dependencies:", prog.dependencies)
+			fmt.Println("You'll first get the option to add new dependencies, and then to remove current ones. Leave blank for options you don't want.")
+			fmt.Print("\nWrite the names of the ones you want to add: ")
+			config.reader.Scan()
+			add := config.reader.Text()
+			fmt.Print("\nWrite the names of the ones you want to remove: ")
+			config.reader.Scan()
+			remove := config.reader.Text()*/
+		case "3":
+			fallthrough
+		default:
+			editing = false
+			fmt.Println("\nEditing finished.")
+		}
+	}
+
+	fmt.Println("Updating", oldName, "to:")
 
 	return nil
 }
@@ -139,19 +183,14 @@ func commandShow(config *config) error {
 
 	name := getExistingProgramName(config)
 	prog := config.programs[name]
-	fmt.Print("Dependencies: ")
-	for _, dep := range prog.dependencies {
-		fmt.Print("\"" + dep.name + "\" ")
-	}
-	if len(prog.dependencies) == 0 {
-		fmt.Print("n/a")
-	}
+
+	fmt.Printf("\nHere is the info on %s:\n", prog.name)
+	fmt.Print("Dependencies:", programDepedenciesString(prog.dependencies))
 	fmt.Println()
 
 	return nil
 }
 
-// Function to deal with getting and checking the name for programs
 func getNewProgramName(config *config) string {
 	name := config.programName
 

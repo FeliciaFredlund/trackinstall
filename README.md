@@ -18,13 +18,20 @@ ADD AN EXAMPLE FOLDER WITH A DATA FILE (SO IT IS EASIER TO TEST)
 
 ## Future plans
 
+- Add the ability/fix the bug that when editing names of programs you can't fix capitalization mistakes if the name is exactly the same otherwise
 - Add the ability to add/edit/remove install and uninstall instructions to each program.
+- Add the ability to overwrite an existing program while adding/editing a program.
 - Add the option to pick the path and filename for the data file. This should also allow placing the binary file wherever. Option would be to add a config file (with the file path) or ???
 - Add what package manager is used (needs some way to save that, config file like filepath?), and have the tool give the commands for installing dependencies and removing/changing them to auto when no longer needed.
 - List dependencies and what programs are dependent on them.
-- Ability to exit out of adding/editing/removing mode
-- Refactor so newProgram also adds the program to the map of programs, meaning that have to be sent in too. (This is to avoid inconsistency in how program names as keys get processed. But I still need to remember to strings.ToLower any time I check the map)
+- Add Ability to exit out of adding/editing/removing mode
 - Add short versions of commands: ls for list, rm for remove.
+- Change help command so it prints the command in the same order every time
+
+- Refactor so newProgram also adds the program to the map of programs, meaning that have to be sent in too. (This is to avoid inconsistency in how program names as keys get processed. But I still need to remember to strings.ToLower any time I check the map)
+- Refactor the depedency struct to hold a slice of *program instead of a slice of programNames
+- Refactor edit function so the switch statement use Go "enums" or change it some other way
+- Refactor files. Aka break up command file perhaps to put each command in their own file, and have the main command file have the helper functions
 
 ## Change log
 

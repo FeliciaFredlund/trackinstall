@@ -1,4 +1,4 @@
-# TrackInstall
+# TrackInstall :ledger:
 
 A CLI to track manually installed programs/apps and their dependencies. In a future update, it will be possible to add install and uninstall instructions.
 
@@ -29,15 +29,18 @@ mv example/EXAMPLE-ti_data.json ti_data.json
 
 ## Screenshots
 Opening screen as well as what the help command looks like:
+
 ![opening screen and help command in TrackInstall](imagesForREADME/initial-screen-plus-help.jpg)
 
 Adding a program and also the show command that shows one chosen program:
+
 ![adding program and show command in TrackInstall](imagesForREADME/add-plus-show.jpg)
 
 What deleting a program looks like:
+
 ![deleting in TrackInstall](imagesForREADME/delete.jpg)
 
-## Change log
+## Changelog
 
 Version 1.0 - 2025-07-27
 

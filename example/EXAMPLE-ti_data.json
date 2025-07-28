@@ -1,1 +1,1 @@
-[{"Name":"The Moon","Dependencies":["planet","star"]},{"Name":"Earth","Dependencies":["moon","solar-system","star"]},{"Name":"Mars","Dependencies":["planet"]},{"Name":"Sun","Dependencies":[]}]
+[{"Name":"Docker Desktop","Dependencies":["gnome-terminal"]},{"Name":"Anki","Dependencies":["libxcb-xinerama0","libxcb-cursor0","libnss3"]}]
